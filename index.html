@@ -244,6 +244,8 @@
       position: relative;
       text-transform: uppercase;
       text-shadow: 0 3px 18px rgba(0, 0, 0, 0.75);
+      text-wrap: balance;
+      animation: type-settle 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
     }
     .glitch-title::after {
       content: 'LITTLE LIFE LOGS';
@@ -268,11 +270,27 @@
       margin-top: 0.5rem;
       font-weight: 400;
       text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+      max-width: 50rem;
+      text-wrap: balance;
+      animation: type-settle 0.9s 0.18s cubic-bezier(0.2, 0.8, 0.2, 1) both;
     }
 
     @keyframes fade-up {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes type-settle {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+        letter-spacing: 0.08em;
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+        letter-spacing: 0;
+      }
     }
 
     .section-title {
@@ -282,6 +300,9 @@
       letter-spacing: 0.1em;
       margin-bottom: 1.5rem;
       font-family: var(--font-code);
+      text-wrap: balance;
+      overflow-wrap: anywhere;
+      animation: type-settle 0.8s 0.25s cubic-bezier(0.2, 0.8, 0.2, 1) both;
     }
 
     .grid {
@@ -290,6 +311,8 @@
       gap: 1.5rem;
       margin-bottom: 4rem;
     }
+
+    .practical-grid { align-items: stretch; }
 
     .card {
       background: var(--bg-panel);
@@ -340,6 +363,8 @@
       color: var(--text-heading);
       margin-bottom: 0.5rem;
       font-weight: 700;
+      text-wrap: balance;
+      overflow-wrap: anywhere;
     }
 
     .card-desc {
@@ -347,6 +372,8 @@
       font-size: 0.9rem;
       line-height: 1.5;
       margin-bottom: 1.5rem;
+      text-wrap: pretty;
+      overflow-wrap: anywhere;
     }
 
     .card-link {
@@ -362,6 +389,66 @@
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
+    }
+
+    .practical-reel-card {
+      animation: reel-frame-in 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    }
+    .practical-reel-card:nth-child(1) { animation-delay: 0.1s; }
+    .practical-reel-card:nth-child(2) { animation-delay: 0.3s; }
+    .practical-reel-card:nth-child(3) { animation-delay: 0.5s; }
+    .practical-reel-card:nth-child(4) { animation-delay: 0.7s; }
+
+    @keyframes reel-frame-in {
+      from {
+        opacity: 0;
+        transform: translateX(-70px) rotateY(18deg) scale(0.94);
+        filter: brightness(0.55);
+      }
+      60% { filter: brightness(1.2); }
+      to {
+        opacity: 1;
+        transform: translateX(0) rotateY(0) scale(1);
+        filter: brightness(1);
+      }
+    }
+
+    .practical-reel-card::after {
+      content: '●  ●  ●  ●  ●  ●  ●  ●';
+      position: absolute;
+      top: 0.45rem;
+      left: 0;
+      width: 100%;
+      color: rgba(255, 255, 255, 0.24);
+      font: 0.55rem var(--font-code);
+      letter-spacing: 0.18rem;
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .practical-reel-card:hover > div:first-child {
+      animation: hide-and-seek 0.75s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .practical-reel-card:hover .card-actions {
+      animation: peek-actions 0.75s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    @keyframes hide-and-seek {
+      0% { opacity: 1; transform: translateX(0); filter: blur(0); }
+      35% { opacity: 0.12; transform: translateX(14px); filter: blur(3px); }
+      70% { opacity: 0.55; transform: translateX(-8px); filter: blur(1px); }
+      100% { opacity: 1; transform: translateX(0); filter: blur(0); }
+    }
+
+    @keyframes peek-actions {
+      0% { transform: translateY(0); opacity: 1; }
+      35% { transform: translateY(8px); opacity: 0.25; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .practical-reel-card { animation: none; }
     }
 
     .marquee-container {
@@ -398,6 +485,72 @@
       color: var(--text-muted);
       font-size: 0.85rem;
       font-family: var(--font-code);
+    }
+
+    @media (min-width: 701px) and (max-width: 1100px) {
+      .container { padding: 3rem 1.5rem; }
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .glitch-title { font-size: 3rem; }
+    }
+
+    @media (max-width: 700px) {
+      .container { padding: 2.5rem 1rem; }
+      .fps-counter {
+        top: 0.75rem;
+        right: 0.75rem;
+        max-width: calc(100vw - 1.5rem);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 0.62rem;
+      }
+      header { margin-bottom: 2.5rem; }
+      .glitch-title { font-size: 2.25rem; line-height: 1.05; }
+      .glitch-title::after {
+        display: none;
+      }
+      .subtitle { font-size: 0.95rem; line-height: 1.5; }
+      .glitch-title { animation-duration: 0.7s; }
+      .subtitle { animation-delay: 0.1s; animation-duration: 0.7s; }
+      .section-title {
+        font-size: 0.85rem;
+        letter-spacing: 0.06em;
+        line-height: 1.5;
+        animation-delay: 0.15s;
+        animation-duration: 0.65s;
+      }
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-bottom: 2.5rem;
+      }
+      .card {
+        min-width: 0;
+        padding: 1.35rem;
+      }
+      .card:hover { transform: translateY(-4px); }
+      .card-tag { font-size: 0.62rem; line-height: 1.5; }
+      .card-title { font-size: 1.25rem; }
+      .card-desc { font-size: 0.86rem; }
+      .card-actions { gap: 0.7rem; }
+      .card-link { font-size: 0.72rem; }
+      .marquee-container { margin: 1.5rem 0 2.5rem; }
+      .marquee-item { font-size: 0.68rem; margin-right: 1.5rem; }
+      footer {
+        flex-direction: column;
+        gap: 0.75rem;
+        font-size: 0.68rem;
+        line-height: 1.5;
+      }
+      .space-scene { opacity: 0.45; }
+      .galaxy { width: 125vw; top: 22%; }
+      .solar-system { transform: scale(0.7); transform-origin: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .glitch-title,
+      .subtitle,
+      .section-title { animation: none; }
     }
   </style>
 </head>
@@ -458,9 +611,9 @@
     </div>
 
     <div class="section-title" id="core-practicals">Core Practicals</div>
-    <div class="section-title">02 / Core Practicals</div>
-    <div class="grid">
-      <div class="card">
+    <div class="section-title practical-section-title">02 / Core Practicals</div>
+    <div class="grid practical-grid">
+      <div class="card practical-reel-card">
         <div>
           <div class="card-tag">Practical 01 | Formatting Styles & Headings - Storytelling basics</div>
           <div class="card-title">Formatting a Feeling</div>
@@ -472,7 +625,7 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card practical-reel-card">
         <div>
             <div class="card-tag">Practical 02 | Font Styles & Image Tag - Moodboard</div>
             <div class="card-title">Fonts & Photo Dumps</div>
@@ -484,7 +637,7 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card practical-reel-card">
         <div>
             <div class="card-tag">Practical 03 | Marquee: Text, Image & Hyperlink - Live thoughts</div>
             <div class="card-title">The Moving Thoughts Bar</div>
@@ -496,7 +649,7 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card practical-reel-card">
         <div>
             <div class="card-tag">Practical 04 | Other Tags: br, hr, pre, p - Real-life details</div>
             <div class="card-title">The Little Things</div>
@@ -523,7 +676,7 @@
 
     <footer>
       <div>LITTLE LIFE LOGS &copy; 2026</div>
-      <div>MADE BETWEEN COFFEE RUNS</div>
+      <div>SAGARIKA BHARGAVA</div>
     </footer>
   </div>
 </body>
