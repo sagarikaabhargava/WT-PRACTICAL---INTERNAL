@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Little Life Logs | Gen Z Stories, Coffee & Daily Pages</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #050816;
+      --bg-panel: rgba(7, 12, 29, 0.9);
+      --bg-card: rgba(7, 12, 29, 0.94);
+      --border-color: #40568e;
+      --text-main: #e2e8ff;
+      --text-muted: #b8c4e8;
+      --text-heading: #ffffff;
+      --accent-green: #78e0b2;
+      --accent-blue: #8bb8ff;
+      --accent-sakura: #ff9bb4;
+      --font-title: 'DM Sans', sans-serif;
+      --font-display: 'Playfair Display', serif;
+      --font-code: 'Space Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+        background: #050816;
+      color: var(--text-main);
+      font-family: var(--font-title);
+      min-height: 100vh;
+      overflow-x: hidden;
+      perspective: 1000px;
+      position: relative;
+    }
+
+    body::before,
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    body::before {
+      background-image:
+        radial-gradient(circle, rgba(255, 255, 255, 0.95) 0 1px, transparent 1.5px),
+        radial-gradient(circle, rgba(139, 184, 255, 0.72) 0 1px, transparent 1.5px);
+      background-position: 12px 24px, 78px 96px;
+      background-size: 150px 150px, 230px 230px;
+      animation: star-drift 35s linear infinite;
+      opacity: 0.7;
+      z-index: 0;
+    }
+
+    body::after {
+      background: radial-gradient(ellipse at center, transparent 30%, rgba(0, 0, 0, 0.62) 100%);
+      z-index: 0;
+    }
+
+    @keyframes star-drift {
+      from { background-position: 12px 24px, 78px 96px; }
+      to { background-position: 162px 174px, -152px 6px; }
+    }
+
+    .space-scene {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.72;
+    }
+
+    .galaxy {
+      position: absolute;
+      top: 8%;
+      left: 50%;
+      width: min(78vw, 900px);
+      aspect-ratio: 1;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      background:
+        radial-gradient(ellipse, rgba(255, 255, 255, 0.9) 0 0.7%, rgba(185, 137, 255, 0.6) 2%, transparent 9%),
+        repeating-conic-gradient(from 20deg, rgba(111, 137, 255, 0.08) 0 7deg, transparent 7deg 20deg),
+        radial-gradient(ellipse, rgba(75, 46, 151, 0.42), transparent 62%);
+      filter: blur(1px);
+      opacity: 0.58;
+      animation: galaxy-spin 45s linear infinite;
+    }
+
+    .galaxy::after {
+      content: '';
+      position: absolute;
+      inset: 28% -4%;
+      border-radius: 50%;
+      background: linear-gradient(90deg, transparent, rgba(109, 188, 255, 0.2), transparent);
+      filter: blur(20px);
+      transform: rotate(-18deg);
+    }
+
+    @keyframes galaxy-spin {
+      to { transform: translateX(-50%) rotate(360deg); }
+    }
+
+    .solar-system {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .sun {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #ffd36a;
+      box-shadow: 0 0 18px #ffb52e, 0 0 48px rgba(255, 154, 47, 0.8);
+      transform: translate(-50%, -50%);
+    }
+
+    .orbit {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border: 1px solid rgba(146, 177, 255, 0.25);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      animation: orbit-spin linear infinite;
+    }
+    .orbit-one { width: 18vw; height: 10vw; animation-duration: 7s; }
+    .orbit-two { width: 31vw; height: 18vw; animation-duration: 13s; }
+    .orbit-three { width: 46vw; height: 27vw; animation-duration: 21s; }
+    .orbit-four { width: 61vw; height: 36vw; animation-duration: 29s; }
+    .orbit-five { width: 78vw; height: 46vw; animation-duration: 38s; }
+    .orbit-six { width: 96vw; height: 57vw; animation-duration: 49s; }
+    @keyframes orbit-spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+
+    .planet {
+      position: absolute;
+      top: -6px;
+      left: 50%;
+      border-radius: 50%;
+      transform: translateX(-50%);
+      overflow: visible;
+      box-shadow: inset -8px -7px 10px rgba(0, 0, 0, 0.42), inset 5px 4px 6px rgba(255, 255, 255, 0.55), 0 0 14px rgba(117, 179, 255, 0.35);
+    }
+    .planet::before {
+      content: '';
+      position: absolute;
+      inset: 12% 18% 16% 14%;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      filter: blur(2px);
+      opacity: 0.6;
+    }
+    .planet-one { width: 12px; height: 12px; background: radial-gradient(circle at 32% 25%, #f4ffff 0 8%, #79c9f3 30%, #2b6cba 72%, #132c70 100%); }
+    .planet-two { width: 18px; height: 18px; background: repeating-linear-gradient(165deg, #ffe1a7 0 3px, #c97a4b 4px 7px, #8a493b 8px 10px); }
+    .planet-three { width: 24px; height: 24px; background: radial-gradient(circle at 34% 26%, #eaffdf 0 7%, #74d39f 30%, #287b70 70%, #123a4f 100%); }
+    .planet-four { width: 15px; height: 15px; background: radial-gradient(circle at 30% 24%, #f2ddff 0 6%, #bb88e9 34%, #6840a2 75%, #2a1d65 100%); }
+    .planet-five {
+      width: 30px;
+      height: 30px;
+      background: repeating-linear-gradient(170deg, #f5d49b 0 4px, #c78252 5px 8px, #996044 9px 12px, #e5b578 13px 16px);
+    }
+    .planet-five::after {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: -6px;
+      width: 37px;
+      height: 7px;
+      border: 1px solid rgba(255, 224, 167, 0.8);
+      border-radius: 50%;
+      transform: rotate(-18deg);
+    }
+    .planet-six { width: 20px; height: 20px; background: radial-gradient(circle at 31% 24%, #e2ffff 0 7%, #68c9d1 34%, #28718d 72%, #153a65 100%); }
+
+    @media (max-width: 700px) {
+      .orbit-one { width: 34vw; height: 19vw; }
+      .orbit-two { width: 56vw; height: 32vw; }
+      .orbit-three { width: 78vw; height: 45vw; }
+      .orbit-four { width: 105vw; height: 61vw; }
+      .orbit-five { width: 135vw; height: 78vw; }
+      .orbit-six { width: 166vw; height: 96vw; }
+    }
+
+    .ambient-aura {
+      position: fixed;
+      top: -20%;
+      left: -20%;
+      width: 140vw;
+      height: 140vh;
+      background: radial-gradient(circle at 50% 30%, rgba(88, 166, 255, 0.05) 0%, rgba(255, 123, 114, 0.02) 35%, transparent 70%);
+      animation: aura-pulse 12s ease-in-out infinite alternate;
+      pointer-events: none;
+      z-index: 0;
+    }
+    @keyframes aura-pulse {
+      0% { transform: scale(1) translate(0, 0); }
+      100% { transform: scale(1.1) translate(-2%, 3%); }
+    }
+
+    .fps-counter {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: rgba(3, 7, 18, 0.96);
+      border: 1px solid var(--border-color);
+      backdrop-filter: blur(20px);
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      font-family: var(--font-code);
+      font-size: 0.75rem;
+      color: var(--accent-green);
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      margin-bottom: 4rem;
+      animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .glitch-title {
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      letter-spacing: -0.02em;
+      position: relative;
+      text-transform: uppercase;
+      text-shadow: 0 3px 18px rgba(0, 0, 0, 0.75);
+    }
+    .glitch-title::after {
+      content: 'LITTLE LIFE LOGS';
+      position: absolute;
+      left: 2px;
+      text-shadow: -1px 0 var(--accent-sakura);
+      clip: rect(0, 900px, 0, 0);
+      animation: glitch-anim 4s infinite linear alternate-reverse;
+    }
+    @keyframes glitch-anim {
+      0% { clip: rect(10px, 9999px, 30px, 0); }
+      20% { clip: rect(0, 9999px, 0, 0); }
+      40% { clip: rect(40px, 9999px, 50px, 0); }
+      60% { clip: rect(0, 9999px, 0, 0); }
+      80% { clip: rect(25px, 9999px, 35px, 0); }
+      100% { clip: rect(0, 9999px, 0, 0); }
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+      font-weight: 400;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+    }
+
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-title {
+      font-size: 1.25rem;
+      color: var(--accent-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1.5rem;
+      font-family: var(--font-code);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .card {
+      background: var(--bg-panel);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.8rem;
+      backdrop-filter: blur(20px);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.32);
+    }
+
+    .card > * { position: relative; z-index: 1; }
+    
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px) rotateX(4deg) rotateY(-2deg);
+      border-color: var(--accent-blue);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .card:hover::before { left: 100%; }
+
+    .card-tag {
+      font-family: var(--font-code);
+      font-size: 0.75rem;
+      color: var(--accent-sakura);
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+    }
+
+    .card-title {
+      font-size: 1.5rem;
+      color: var(--text-heading);
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    .card-desc {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+    }
+
+    .card-link {
+      font-family: var(--font-code);
+      font-size: 0.85rem;
+      color: var(--accent-blue);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .card-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .marquee-container {
+      background: rgba(3, 7, 18, 0.92);
+      border-top: 1px solid #526aa8;
+      border-bottom: 1px solid #526aa8;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 0.75rem 0;
+      margin: 2rem 0 4rem 0;
+    }
+    .marquee-content {
+      display: inline-block;
+      animation: continuous-scroll 25s linear infinite;
+    }
+    .marquee-item {
+      display: inline-block;
+      font-family: var(--font-code);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-right: 3rem;
+    }
+    @keyframes continuous-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    footer {
+      border-top: 1px solid #526aa8;
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-family: var(--font-code);
+    }
+  </style>
+</head>
+<body>
+  <div class="space-scene" aria-hidden="true">
+    <div class="galaxy"></div>
+    <div class="solar-system">
+      <div class="sun"></div>
+      <div class="orbit orbit-one"><span class="planet planet-one"></span></div>
+      <div class="orbit orbit-two"><span class="planet planet-two"></span></div>
+      <div class="orbit orbit-three"><span class="planet planet-three"></span></div>
+      <div class="orbit orbit-four"><span class="planet planet-four"></span></div>
+      <div class="orbit orbit-five"><span class="planet planet-five"></span></div>
+      <div class="orbit orbit-six"><span class="planet planet-six"></span></div>
+    </div>
+  </div>
+  <div class="ambient-aura"></div>
+  <div class="fps-counter">LIFE LOG 01 | ONLINE</div>
+
+  <div class="container">
+    <header>
+      <h1 class="glitch-title">LITTLE LIFE LOGS</h1>
+      <p class="subtitle">A soft corner for coffee runs, tiny wins, bad days, and the stories in between.</p>
+    </header>
+
+    <div class="marquee-container">
+      <div class="marquee-content">
+        <span class="marquee-item">TODAY FELT LIKE A SLOW MORNING</span>
+          <span class="marquee-item">ONE ICED LATTE, ZERO REGRETS</span>
+          <span class="marquee-item">SMALL MOMENTS COUNT TOO</span>
+          <span class="marquee-item">CURRENTLY ROMANTICISING MY ROUTINE</span>
+          <span class="marquee-item">TODAY FELT LIKE A SLOW MORNING</span>
+          <span class="marquee-item">ONE ICED LATTE, ZERO REGRETS</span>
+          <span class="marquee-item">SMALL MOMENTS COUNT TOO</span>
+          <span class="marquee-item">CURRENTLY ROMANTICISING MY ROUTINE</span>
+      </div>
+    </div>
+
+    <div class="section-title">01 / Places & Pages I Keep Coming Back To</div>
+    <div class="grid">
+      <a href="project1-3d-canvas.html" class="card">
+        <div>
+          <div class="card-tag">Cafe shop website</div>
+          <div class="card-title">Corner Table Coffee</div>
+          <div class="card-desc">A cosy neighbourhood cafe for people who order the same drink every time, stay for the playlist, and occasionally make a friend.</div>
+        </div>
+        <div class="card-link">Visit the cafe &rarr;</div>
+      </a>
+
+      <a href="project2-mindful-care.html" class="card">
+        <div>
+           <div class="card-tag">Personal diary</div>
+           <div class="card-title">Dear Future Me</div>
+           <div class="card-desc">A daily diary for messy thoughts, tiny wins, comfort shows, people-watching, and the moments I do not want to forget.</div>
+        </div>
+          <div class="card-link">Open today&apos;s page &rarr;</div>
+      </a>
+    </div>
+
+    <div class="section-title" id="core-practicals">Core Practicals</div>
+    <div class="section-title">02 / Core Practicals</div>
+    <div class="grid">
+      <div class="card">
+        <div>
+          <div class="card-tag">Practical 01 | Formatting Styles & Headings - Storytelling basics</div>
+          <div class="card-title">Formatting a Feeling</div>
+          <div class="card-desc">How headings, emphasis, highlights, and tiny details can turn “my day was okay” into a story.</div>
+        </div>
+        <div class="card-actions">
+          <a href="formatting.html" class="card-link">View Module &rarr;</a>
+          <a href="formatting_steps.html" class="card-link">Formatting Steps &rarr;</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+            <div class="card-tag">Practical 02 | Font Styles & Image Tag - Moodboard</div>
+            <div class="card-title">Fonts & Photo Dumps</div>
+            <div class="card-desc">A visual diary of coffee foam, outfit textures, late sunsets, and the fonts that match the mood.</div>
+        </div>
+        <div class="card-actions">
+          <a href="fonts_images.html" class="card-link">View Module &rarr;</a>
+          <a href="fonts_images_steps.html" class="card-link">Photo Dump Steps &rarr;</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+            <div class="card-tag">Practical 03 | Marquee: Text, Image & Hyperlink - Live thoughts</div>
+            <div class="card-title">The Moving Thoughts Bar</div>
+            <div class="card-desc">A scrolling stream of unfiltered thoughts, currently playing songs, and reminders I keep forgetting.</div>
+        </div>
+        <div class="card-actions">
+          <a href="marquee.html" class="card-link">View Module &rarr;</a>
+          <a href="marquee_steps.html" class="card-link">Moving Bar Steps &rarr;</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+            <div class="card-tag">Practical 04 | Other Tags: br, hr, pre, p - Real-life details</div>
+            <div class="card-title">The Little Things</div>
+            <div class="card-desc">The pauses, line breaks, quotes, and tiny snapshots that make an ordinary story feel like yours.</div>
+        </div>
+        <div class="card-actions">
+          <a href="other_tags.html" class="card-link">View Module &rarr;</a>
+          <a href="other_tags_steps.html" class="card-link">Little Things Steps &rarr;</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+            <div class="card-tag">Combined Site Build Steps</div>
+            <div class="card-title">How This Site Was Built</div>
+            <div class="card-desc">One combined step guide for the main page, both projects, and all four Core Practical cards.</div>
+        </div>
+        <div class="card-actions">
+          <a href="site_build_steps.html" class="card-link">View Build Steps &rarr;</a>
+          <a href="steps_code_tags.html" class="card-link">View Tag Guide &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div>LITTLE LIFE LOGS &copy; 2026</div>
+      <div>MADE BETWEEN COFFEE RUNS</div>
+    </footer>
+  </div>
+</body>
+</html>

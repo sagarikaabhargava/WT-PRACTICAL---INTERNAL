@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Little Life Logs — Practical 04: The Little Things</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #0d1117;
+      --bg-panel: rgba(22, 27, 34, 0.8);
+      --border-color: #30363d;
+      --text-main: #c9d1d9;
+      --text-muted: #8b949e;
+      --text-heading: #f0f6fc;
+      --accent-blue: #58a6ff;
+      --font-title: 'Syne', sans-serif;
+      --font-code: 'JetBrains Mono', monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: var(--font-title);
+      min-height: 100vh;
+      padding: 2.5rem;
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-family: var(--font-code);
+      font-size: 0.85rem;
+      margin-bottom: 2rem;
+    }
+    .back-btn:hover { color: var(--accent-blue); }
+    .panel {
+      background: var(--bg-panel);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 2.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+      backdrop-filter: blur(20px);
+    }
+    
+    hr {
+      border: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+      margin: 2rem 0;
+    }
+    
+    pre {
+      background: #090d13;
+      border: 1px solid var(--border-color);
+      padding: 1.25rem;
+      border-radius: 8px;
+      font-family: var(--font-code);
+      font-size: 0.85rem;
+      color: var(--accent-blue);
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="panel">
+    <a href="index.html" class="back-btn">&larr; BACK TO MASTER WORKSPACE</a>
+    <nav aria-label="Internal page links"><a href="#little-things">Jump to the little things</a></nav>
+
+    <h1 id="little-things" style="color: var(--text-heading);">THE LITTLE THINGS I WANT TO REMEMBER</h1>
+    <p style="color: var(--text-muted);">Stories are also made of pauses, clean breaks, saved words, and the details that would sound small to everyone else.</p>
+
+    <hr>
+
+    <p style="color: var(--text-muted);">The barista remembered my order.<br>My friend laughed before I finished the story.</p>
+
+    <hr>
+
+    <pre>&lt;div class="ordinary-day"&gt;
+  &lt;span&gt;one good song can change the walk home&lt;/span&gt;
+&lt;/div&gt;</pre>
+  </div>
+</body>
+</html>

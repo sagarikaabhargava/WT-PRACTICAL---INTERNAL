@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dear Future Me | Personal Daily Diary</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #100718;
+      --bg-panel: rgba(29, 10, 35, 0.88);
+      --border-color: #73365f;
+      --text-main: #f7dce9;
+      --text-muted: #c89db8;
+      --text-heading: #fff5fb;
+      --accent-sakura: #ff6fae;
+      --accent-blue: #b883ff;
+      --font-title: 'DM Sans', sans-serif;
+      --font-display: 'Playfair Display', serif;
+      --font-code: 'Space Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background:
+        radial-gradient(circle at 82% 12%, rgba(255, 91, 174, 0.3), transparent 25rem),
+        radial-gradient(circle at 15% 82%, rgba(177, 68, 255, 0.2), transparent 28rem),
+        linear-gradient(135deg, #100718 0%, #24102f 52%, #090615 100%);
+      color: var(--text-main);
+      font-family: var(--font-title);
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-family: var(--font-code);
+      font-size: 0.85rem;
+      margin-bottom: 2rem;
+    }
+    .back-btn:hover { color: var(--accent-sakura); }
+
+    .container { max-width: 1000px; margin: 0 auto; }
+
+    header { margin-bottom: 3rem; }
+    header h1 { font-size: 2.5rem; color: var(--text-heading); }
+    header p { color: var(--text-muted); }
+
+    .breath-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem;
+      background: var(--bg-panel);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      margin-bottom: 3rem;
+      backdrop-filter: blur(20px);
+    }
+    .breath-circle {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 32% 25%, #ffd6ed 0 4%, var(--accent-sakura) 24%, #a82b78 58%, transparent 72%);
+      animation: scale-breath 8s ease-in-out infinite;
+      box-shadow: 0 0 30px rgba(255, 78, 171, 0.42), 0 0 80px rgba(177, 68, 255, 0.2);
+    }
+    @keyframes scale-breath {
+      0%, 100% { transform: scale(0.8); opacity: 0.4; }
+      50% { transform: scale(1.4); opacity: 0.9; }
+    }
+    .breath-label {
+      margin-top: 1.5rem;
+      font-family: var(--font-code);
+      font-size: 0.85rem;
+      color: var(--accent-sakura);
+      letter-spacing: 0.1em;
+    }
+
+    .accordion-group { margin-bottom: 3rem; }
+    .accordion-item {
+      background: var(--bg-panel);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+    .accordion-toggle { display: none; }
+    .accordion-header {
+      padding: 1.25rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .accordion-header::after {
+      content: '+';
+      font-family: var(--font-code);
+      color: var(--accent-sakura);
+    }
+    .accordion-toggle:checked + .accordion-header::after { content: '-'; }
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.4s ease;
+      padding: 0 1.25rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    .accordion-toggle:checked ~ .accordion-content {
+      max-height: 200px;
+      padding: 0 1.25rem 1.25rem 1.25rem;
+    }
+
+    .collage-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .collage-img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+    }
+
+    .diary-form {
+      background: var(--bg-panel);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .diary-form label {
+      display: block;
+      color: var(--text-heading);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .diary-form input,
+    .diary-form textarea {
+      width: 100%;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      color: var(--text-main);
+      background: rgba(12, 4, 20, 0.8);
+      border-color: #a84d86;
+      color-scheme: dark;
+      font: inherit;
+    }
+    .diary-form textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+    .diary-form button {
+      border: 0;
+      border-radius: 6px;
+      padding: 0.8rem 1rem;
+      color: #fff;
+      background: linear-gradient(135deg, #ff6fae, #a84de0);
+      box-shadow: 0 8px 20px rgba(255, 72, 164, 0.25);
+      cursor: pointer;
+      font: 700 0.85rem var(--font-code);
+    }
+    .saved-entry {
+      border-top: 1px solid var(--border-color);
+      margin-top: 1.25rem;
+      padding-top: 1.25rem;
+    }
+    .saved-entry strong { color: var(--text-heading); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="index.html" class="back-btn">&larr; BACK TO MASTER WORKSPACE</a>
+    <nav aria-label="Internal page links"><a href="#diary-pages">Jump to diary pages</a></nav>
+
+    <header id="diary-pages">
+      <h1>DEAR FUTURE ME</h1>
+      <p>A daily personal diary for the plot twists, tiny wins, and very specific feelings.</p>
+    </header>
+
+    <div class="breath-container">
+      <div class="breath-circle"></div>
+      <div class="breath-label">TODAY&apos;S MOOD: SOFTLY GETTING THERE</div>
+    </div>
+
+    <form class="diary-form" id="diary-form">
+      <label for="entry-date">Add a page for today</label>
+      <input id="entry-date" type="date" required>
+      <textarea id="entry-text" placeholder="What happened today? Be honest, be specific, be you..." required></textarea>
+      <button type="submit">Save diary page</button>
+      <div id="saved-entries" aria-live="polite"></div>
+    </form>
+
+    <h2 style="font-size: 1.2rem; color: var(--accent-sakura); margin-bottom: 1rem;">RECENT PAGES FROM THE DIARY</h2>
+    <div class="accordion-group">
+      <div class="accordion-item">
+        <input type="checkbox" id="acc1" class="accordion-toggle">
+        <label for="acc1" class="accordion-header">18 September: I finally took the long way home</label>
+        <div class="accordion-content">
+          I left class without rushing to the bus stop. The sky was pink, my headphones were playing an old favourite, and I bought a samosa just because it smelled good. Small win: I was present for my own evening.
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <input type="checkbox" id="acc2" class="accordion-toggle">
+        <label for="acc2" class="accordion-header">17 September: Main character at the cafe</label>
+        <div class="accordion-content">
+          Worked on my assignment beside a window seat for two hours. I did not finish everything, but I finished the scary part. Reward: an iced mocha and a very dramatic sunset.
+        </div>
+      </div>
+    </div>
+
+    <h2 style="font-size: 1.2rem; color: var(--accent-sakura); margin-bottom: 1rem;">LITTLE MEMORY BOARD</h2>
+    <div class="collage-grid">
+      <img class="collage-img" src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=500&q=80" alt="Notebook and coffee on a desk">
+      <img class="collage-img" src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=500&q=80" alt="A quiet sunset walk">
+      <img class="collage-img" src="https://images.unsplash.com/photo-1511988617509-a57c8a288659?auto=format&fit=crop&w=500&q=80" alt="Friends laughing together">
+    </div>
+  </div>
+  <script>
+    const diaryForm = document.querySelector('#diary-form');
+    const entryDate = document.querySelector('#entry-date');
+    const entryText = document.querySelector('#entry-text');
+    const savedEntries = document.querySelector('#saved-entries');
+    const storageKey = 'little-life-diary-entries';
+
+    entryDate.value = new Date().toISOString().slice(0, 10);
+
+    function renderEntries() {
+      const entries = JSON.parse(localStorage.getItem(storageKey) || '[]');
+      savedEntries.innerHTML = entries.map((entry) => `
+        <article class="saved-entry">
+          <strong>${entry.date}</strong>
+          <p>${entry.text.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</p>
+        </article>
+      `).join('');
+    }
+
+    diaryForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const entries = JSON.parse(localStorage.getItem(storageKey) || '[]');
+      entries.unshift({ date: entryDate.value, text: entryText.value });
+      localStorage.setItem(storageKey, JSON.stringify(entries.slice(0, 30)));
+      entryText.value = '';
+      renderEntries();
+    });
+
+    renderEntries();
+  </script>
+</body>
+</html>

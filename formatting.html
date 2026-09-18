@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Little Life Logs — Practical 01: Formatting a Feeling</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Syne:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #0d1117;
+      --bg-panel: rgba(22, 27, 34, 0.8);
+      --border-color: #30363d;
+      --text-main: #c9d1d9;
+      --text-muted: #8b949e;
+      --text-heading: #f0f6fc;
+      --accent-blue: #58a6ff;
+      --font-title: 'Syne', sans-serif;
+      --font-code: 'JetBrains Mono', monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: var(--font-title);
+      min-height: 100vh;
+      padding: 2.5rem;
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-family: var(--font-code);
+      font-size: 0.85rem;
+      margin-bottom: 2rem;
+    }
+    .back-btn:hover { color: var(--accent-blue); }
+    .panel {
+      background: var(--bg-panel);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 2.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+      backdrop-filter: blur(20px);
+    }
+    h1, h2, h3, h4, h5, h6 { color: var(--text-heading); margin-bottom: 1rem; }
+    p { color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.6; }
+    mark { background: rgba(88, 166, 255, 0.2); color: var(--accent-blue); padding: 0.2rem 0.4rem; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <div class="panel">
+    <a href="index.html" class="back-btn">&larr; BACK TO MASTER WORKSPACE</a>
+    <nav aria-label="Internal page links"><a href="#formatting-example">Jump to formatting example</a></nav>
+    
+    <h1 id="formatting-example">THE DAY I STOPPED RUSHING</h1>
+    <h2>A tiny story about taking the long way home</h2>
+    <h3>18 September, after class</h3>
+    <h4>The detail I almost missed</h4>
+    <h5>A small choice can change the mood</h5>
+    <h6>End note: take the long way sometimes</h6>
+
+    <p>I was about to sprint for the bus when I noticed the sky had turned the exact colour of a peach iced tea. So I took the long way home. <b>That choice felt weirdly brave</b>, even though it was just a twenty-minute walk. I bought a snack, called my friend, and highlighted <mark>the part of the day that actually felt like mine</mark>.</p>
+
+    <p>Real-life details matter: the corner table had H<sub>2</sub>O on the menu, and my confidence went from 0 to 100<sup>3</sup> after one good song. <u>The walk was worth it.</u> <s>I needed to rush home.</s></p>
+  </div>
+</body>
+</html>

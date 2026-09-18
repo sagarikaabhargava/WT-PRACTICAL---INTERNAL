@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corner Table Coffee | Cafe Shop</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #100718;
+      --bg-panel: rgba(29, 10, 35, 0.88);
+      --border-color: #73365f;
+      --text-main: #f7dce9;
+      --text-muted: #c89db8;
+      --text-heading: #fff5fb;
+      --accent-blue: #ff9fd0;
+      --accent-green: #b5f0d2;
+      --accent-sakura: #ff6fae;
+      --font-title: 'DM Sans', sans-serif;
+      --font-display: 'Playfair Display', serif;
+      --font-code: 'Space Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background:
+        radial-gradient(circle at 15% 12%, rgba(255, 91, 174, 0.28), transparent 24rem),
+        radial-gradient(circle at 85% 78%, rgba(177, 68, 255, 0.22), transparent 28rem),
+        linear-gradient(135deg, #100718 0%, #24102f 52%, #090615 100%);
+      color: var(--text-main);
+      font-family: var(--font-title);
+      min-height: 100vh;
+      overflow-x: hidden;
+      padding: 2rem;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-family: var(--font-code);
+      font-size: 0.85rem;
+      margin-bottom: 2rem;
+      transition: color 0.2s;
+    }
+    .back-btn:hover { color: var(--accent-sakura); }
+
+    .fps-counter {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: rgba(8, 3, 14, 0.94);
+      border: 1px solid var(--border-color);
+      backdrop-filter: blur(20px);
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      font-family: var(--font-code);
+      font-size: 0.75rem;
+      color: var(--accent-green);
+      z-index: 100;
+    }
+
+    .spatial-stage {
+      perspective: 1200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 3rem 0;
+    }
+
+    .spatial-card {
+      width: 100%;
+      max-width: 900px;
+      background: var(--bg-panel);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 2.5rem;
+      backdrop-filter: blur(25px);
+      transform: rotateX(8deg) rotateY(-6deg);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      position: relative;
+    }
+
+    .spatial-card:hover {
+      transform: rotateX(0deg) rotateY(0deg) scale(1.02);
+      box-shadow: 0 30px 70px rgba(255, 74, 168, 0.24);
+    }
+
+    .player-header {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .album-art {
+      width: 140px;
+      height: 140px;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+    }
+
+    .track-info h1 {
+      font-size: 2rem;
+      color: var(--text-heading);
+      margin-bottom: 0.25rem;
+    }
+    .track-info p {
+      color: var(--accent-sakura);
+      font-family: var(--font-code);
+      font-size: 0.9rem;
+    }
+
+    .lyric-ticker {
+      background: linear-gradient(90deg, rgba(13, 4, 24, 0.96), rgba(50, 12, 52, 0.94), rgba(13, 4, 24, 0.96));
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      overflow: hidden;
+      white-space: nowrap;
+      margin-bottom: 2rem;
+    }
+    .lyric-stream {
+      display: inline-block;
+      animation: continuous-scroll 20s linear infinite;
+      font-family: var(--font-code);
+      color: var(--accent-blue);
+      font-size: 0.9rem;
+    }
+
+    @keyframes continuous-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .glass-divider {
+      border: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+      margin: 2rem 0;
+    }
+
+    .api-log-container {
+      background: rgba(8, 3, 14, 0.96);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.25rem;
+      overflow-x: auto;
+    }
+    .api-log-title {
+      font-family: var(--font-code);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+    pre {
+      font-family: var(--font-code);
+      font-size: 0.8rem;
+      color: var(--accent-green);
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="fps-counter">OPEN TODAY 07:30 - 20:00</div>
+  <a href="index.html" class="back-btn">&larr; BACK TO MASTER WORKSPACE</a>
+  <nav aria-label="Internal page links"><a href="#cafe-story">Jump to cafe story</a></nav>
+
+  <div class="spatial-stage">
+    <div class="spatial-card" id="cafe-story">
+      <div class="player-header">
+        <img class="album-art" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=400&q=80" alt="Latte on a cafe table">
+        <div class="track-info">
+          <h1>CORNER TABLE COFFEE</h1>
+          <p>Your regular order, but make it a little special.</p>
+        </div>
+      </div>
+
+      <div class="lyric-ticker">
+        <div class="lyric-stream">
+          TODAY&apos;S VIBE: warm cinnamon &bull; rainy windows &bull; one more chapter &bull; oat latte energy &bull; TODAY&apos;S VIBE: warm cinnamon &bull; rainy windows &bull; one more chapter &bull; oat latte energy
+        </div>
+      </div>
+
+      <hr class="glass-divider">
+
+      <div class="api-log-container">
+        <div class="api-log-title">THE MENU BOARD / PEOPLE WATCHING NOTES</div>
+<pre>{
+  "special": "honey cinnamon latte",
+  "price": "Rs 220",
+  "best_table": "the one by the window",
+  "todays_note": "the barista knows my order now",
+  "status": "freshly brewed"
+}</pre>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

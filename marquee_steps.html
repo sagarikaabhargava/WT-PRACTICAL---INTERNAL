@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moving Thoughts Bar — Steps, Code & Internal CSS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #100718;
+      --bg-panel: rgba(29, 10, 35, 0.9);
+      --border-color: #73365f;
+      --text-main: #f7dce9;
+      --text-muted: #c89db8;
+      --text-heading: #fff5fb;
+      --accent-sakura: #ff6fae;
+      --accent-green: #b5f0d2;
+      --font-title: 'DM Sans', sans-serif;
+      --font-display: 'Playfair Display', serif;
+      --font-code: 'Space Mono', monospace;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 2rem;
+      color: var(--text-main);
+      font-family: var(--font-title);
+      background: radial-gradient(circle at 82% 10%, rgba(255, 91, 174, 0.3), transparent 25rem), linear-gradient(135deg, #100718, #24102f 52%, #090615);
+    }
+    .panel { max-width: 950px; margin: 0 auto; padding: 2.5rem; background: var(--bg-panel); border: 1px solid var(--border-color); border-radius: 14px; box-shadow: 0 25px 70px rgba(0, 0, 0, 0.45); }
+    a { color: var(--accent-sakura); }
+    .back-btn, nav a { font: 0.8rem var(--font-code); }
+    .back-btn { display: inline-block; margin-bottom: 1rem; text-decoration: none; }
+    nav { margin-bottom: 2rem; }
+    h1, h2 { color: var(--text-heading); font-family: var(--font-display); }
+    h1 { margin-bottom: 0.75rem; }
+    h2 { margin: 2rem 0 0.75rem; }
+    p, li { color: var(--text-muted); line-height: 1.7; }
+    ol { padding-left: 1.5rem; }
+    li { margin-bottom: 0.55rem; }
+    pre { overflow-x: auto; padding: 1rem; color: var(--accent-green); background: rgba(7, 2, 13, 0.9); border: 1px solid var(--border-color); border-radius: 8px; font: 0.8rem/1.6 var(--font-code); }
+    code { color: var(--accent-green); font-family: var(--font-code); }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 0.8rem; border: 1px solid var(--border-color); text-align: left; }
+    th { color: var(--text-heading); background: rgba(255, 111, 174, 0.12); }
+    td { color: var(--text-muted); }
+    @media (max-width: 650px) { body { padding: 1rem; } .panel { padding: 1.25rem; } th, td { padding: 0.55rem; font-size: 0.85rem; } }
+  </style>
+</head>
+<body>
+  <main class="panel">
+    <a href="index.html" class="back-btn">&larr; BACK TO MASTER WORKSPACE</a>
+    <nav aria-label="Internal page links"><a href="#steps">Jump to steps</a> | <a href="#internal-css">Jump to internal CSS</a> | <a href="#tags">Jump to tags</a></nav>
+
+    <h1>MOVING THOUGHTS BAR: HOW TO MAKE IT</h1>
+    <p>This guide explains only the marquee text, image, hyperlink, animation, and internal CSS used in the Moving Thoughts Bar practical.</p>
+
+    <h2 id="steps">Steps to Make the Moving Bar</h2>
+    <ol>
+      <li>Create the HTML document structure and set the page title.</li>
+      <li>Create a container with <code>overflow: hidden</code> so content stays inside the bar.</li>
+      <li>Place the moving text inside a child element.</li>
+      <li>Add the image with <code>&lt;img&gt;</code> and a descriptive <code>alt</code> value.</li>
+      <li>Add a hyperlink with <code>&lt;a&gt;</code> so the moving content can open another page.</li>
+      <li>Use an internal CSS <code>@keyframes</code> animation to move the content from right to left.</li>
+      <li>Repeat the text when needed so the animation appears continuous.</li>
+      <li>Open the page in a browser and test the moving text, image, and hyperlink.</li>
+    </ol>
+
+    <h2>Moving Bar Code</h2>
+    <pre>&lt;div class="ticker-box"&gt;
+  &lt;div class="ticker-text"&gt;
+    thoughts for today &bull;
+    &lt;a href="formatting.html"&gt;Read the story&lt;/a&gt;
+    &lt;img src="coffee.jpg" alt="Coffee on a table"&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+
+    <h2 id="internal-css">Internal CSS Tutorial</h2>
+    <p>Internal CSS is written inside a <code>&lt;style&gt;</code> tag in the page&apos;s <code>&lt;head&gt;</code>. The selector chooses an element, the property names the style, and the value controls the result.</p>
+    <pre>&lt;style&gt;
+  .ticker-box {
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .ticker-text {
+    display: inline-block;
+    animation: move-thoughts 15s linear infinite;
+  }
+
+  @keyframes move-thoughts {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+&lt;/style&gt;</pre>
+    <p><code>overflow</code> hides content outside the bar, <code>white-space</code> keeps the line unbroken, and <code>@keyframes</code> defines the movement.</p>
+
+    <h2 id="tags">Tags and CSS Used</h2>
+    <table>
+      <thead><tr><th>Tag or CSS</th><th>Purpose</th><th>Use in this practical</th></tr></thead>
+      <tbody>
+        <tr><td><code>&lt;div&gt;</code></td><td>Groups elements into sections.</td><td>Creates the ticker box and moving content.</td></tr>
+        <tr><td><code>&lt;a&gt;</code></td><td>Creates a hyperlink.</td><td>Links the moving thought to another page.</td></tr>
+        <tr><td><code>&lt;img&gt;</code></td><td>Displays an image.</td><td>Adds an image inside the moving bar.</td></tr>
+        <tr><td><code>src</code></td><td>Provides the image location.</td><td>Tells the browser which image to load.</td></tr>
+        <tr><td><code>alt</code></td><td>Describes the image.</td><td>Improves accessibility if the image cannot load.</td></tr>
+        <tr><td><code>overflow: hidden</code></td><td>Hides content outside a box.</td><td>Keeps the ticker content inside its container.</td></tr>
+        <tr><td><code>@keyframes</code></td><td>Defines animation stages.</td><td>Moves the text from right to left.</td></tr>
+        <tr><td><code>animation</code></td><td>Applies an animation to an element.</td><td>Runs the marquee continuously.</td></tr>
+      </tbody>
+    </table>
+  </main>
+</body>
+</html>

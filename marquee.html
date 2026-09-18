@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Little Life Logs — Practical 03: Moving Thoughts</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #0d1117;
+      --bg-panel: rgba(22, 27, 34, 0.8);
+      --border-color: #30363d;
+      --text-main: #c9d1d9;
+      --text-muted: #8b949e;
+      --text-heading: #f0f6fc;
+      --accent-green: #238636;
+      --font-title: 'Syne', sans-serif;
+      --font-code: 'JetBrains Mono', monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: var(--font-title);
+      min-height: 100vh;
+      padding: 2.5rem;
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-family: var(--font-code);
+      font-size: 0.85rem;
+      margin-bottom: 2rem;
+    }
+    .back-btn:hover { color: var(--accent-green); }
+    .panel {
+      background: var(--bg-panel);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 2.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+      backdrop-filter: blur(20px);
+    }
+    
+    .ticker-box {
+      background: #090d13;
+      border: 1px solid var(--border-color);
+      padding: 1rem;
+      border-radius: 8px;
+      overflow: hidden;
+      white-space: nowrap;
+      margin: 1.5rem 0;
+    }
+    .ticker-text {
+      display: inline-block;
+      animation: continuous-scroll 15s linear infinite;
+      font-family: var(--font-code);
+      color: var(--accent-green);
+    }
+    @keyframes continuous-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+  </style>
+</head>
+<body>
+  <div class="panel">
+    <a href="index.html" class="back-btn">&larr; BACK TO MASTER WORKSPACE</a>
+    <nav aria-label="Internal page links"><a href="#moving-thoughts">Jump to moving content</a></nav>
+
+    <h1 id="moving-thoughts" style="color: var(--text-heading); margin-bottom: 1rem;">THE THOUGHTS I KEEP REPLAYING</h1>
+    <p style="color: var(--text-muted);">Some thoughts move fast, some circle back, and some deserve a little space before we decide what they mean.</p>
+
+    <div class="ticker-box">
+      <div class="ticker-text">
+        currently thinking about: texting back &bull; trying the new cafe &bull; finishing one task before starting five more &bull; saving the good moments &bull; currently thinking about: texting back &bull; trying the new cafe &bull; finishing one task before starting five more &bull; saving the good moments
+        <a href="formatting.html">Read the full story</a>
+        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=180&q=80" alt="Coffee moving through the marquee story" width="120" height="60">
+      </div>
+    </div>
+  </div>
+</body>
+</html>

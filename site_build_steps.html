@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How This Site Was Built — Combined Steps</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #100718;
+      --bg-panel: rgba(29, 10, 35, 0.9);
+      --border-color: #73365f;
+      --text-main: #f7dce9;
+      --text-muted: #c89db8;
+      --text-heading: #fff5fb;
+      --accent-sakura: #ff6fae;
+      --font-title: 'DM Sans', sans-serif;
+      --font-display: 'Playfair Display', serif;
+      --font-code: 'Space Mono', monospace;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 2rem;
+      color: var(--text-main);
+      font-family: var(--font-title);
+      background: radial-gradient(circle at 82% 10%, rgba(255, 91, 174, 0.3), transparent 25rem), linear-gradient(135deg, #100718, #24102f 52%, #090615);
+    }
+    .panel { max-width: 950px; margin: 0 auto; padding: 2.5rem; background: var(--bg-panel); border: 1px solid var(--border-color); border-radius: 14px; box-shadow: 0 25px 70px rgba(0, 0, 0, 0.45); }
+    a { color: var(--accent-sakura); }
+    .back-btn, nav a { font: 0.8rem var(--font-code); }
+    .back-btn { display: inline-block; margin-bottom: 1rem; text-decoration: none; }
+    nav { margin-bottom: 2rem; }
+    h1, h2 { color: var(--text-heading); font-family: var(--font-display); }
+    h1 { margin-bottom: 0.75rem; }
+    h2 { margin: 2rem 0 0.75rem; }
+    p, li { color: var(--text-muted); line-height: 1.7; }
+    ol { padding-left: 1.5rem; }
+    li { margin-bottom: 0.7rem; }
+    .note { padding: 1rem; border-left: 3px solid var(--accent-sakura); background: rgba(255, 111, 174, 0.08); }
+    @media (max-width: 650px) { body { padding: 1rem; } .panel { padding: 1.25rem; } }
+  </style>
+</head>
+<body>
+  <main class="panel">
+    <a href="index.html" class="back-btn">&larr; BACK TO MASTER WORKSPACE</a>
+    <nav aria-label="Internal page links"><a href="#main-page">Main page</a> | <a href="#projects">Projects</a> | <a href="#practicals">Core Practicals</a> | <a href="#github">GitHub Pages</a> | <a href="#testing">Testing</a></nav>
+
+    <h1>HOW THIS WHOLE SITE WAS BUILT</h1>
+    <p>This is one combined step guide for the main page, both projects, and the four Core Practical cards. It explains the order of work only; it does not include a code section.</p>
+
+    <h2 id="main-page">Part 1: Build the Main Page</h2>
+    <ol>
+      <li>Plan the home page as the central hub for all pages.</li>
+      <li>Add the site title, short introduction, and moving welcome message.</li>
+      <li>Create a project section with cards for the café and diary pages.</li>
+      <li>Create the Core Practicals section with four individual cards.</li>
+      <li>Give every card a clear topic name, description, and working hyperlink.</li>
+      <li>Add the animated space background while keeping the text and cards readable.</li>
+      <li>Finish with a footer and a consistent visual theme.</li>
+    </ol>
+
+    <h2 id="projects">Part 2: Add the Two Projects</h2>
+    <ol>
+      <li>Create the café project page with its name, café image, featured drink, opening hours, and customer story.</li>
+      <li>Keep the café layout focused on the menu feeling, atmosphere, and visit details.</li>
+      <li>Create the personal diary project page with a title, mood area, diary entries, and memory images.</li>
+      <li>Add the diary date field and writing area so a visitor can save daily entries in the browser.</li>
+      <li>Add a back-to-home link and an internal link on both project pages.</li>
+    </ol>
+
+    <h2 id="practicals">Part 3: Combine the Four Core Practicals</h2>
+    <ol>
+      <li>Add Practical 01 for Formatting Styles and Headings, including the six heading levels and text styles.</li>
+      <li>Add Practical 02 for Font Styles and Image Tag, including different fonts, images, and a photo gallery.</li>
+      <li>Add Practical 03 for Marquee, including moving text, an image, and a hyperlink.</li>
+      <li>Add Practical 04 for Other Tags, including paragraphs, line breaks, dividers, and preformatted content.</li>
+      <li>Keep each practical as its own linked card so the home page stays easy to navigate.</li>
+      <li>Add a separate step guide button where a practical needs extra explanation.</li>
+    </ol>
+
+    <h2 id="github">Part 4: Push and Deploy with GitHub Pages</h2>
+    <ol>
+      <li>Sign in to GitHub and create a new public repository with a clear name such as <strong>little-life-logs</strong>.</li>
+      <li>Open the project folder in VS Code and open its terminal.</li>
+      <li>Initialize Git in the project folder and check which files are ready to be tracked.</li>
+      <li>Add the project files to Git, then create the first commit with a message such as <strong>Build practical website</strong>.</li>
+      <li>Connect the local project to the GitHub repository using the repository URL.</li>
+      <li>Push the project to the main branch on GitHub.</li>
+      <li>Refresh the GitHub repository page and confirm that all HTML files are visible.</li>
+      <li>In the repository, open <strong>Settings</strong>, choose <strong>Pages</strong>, and select <strong>Deploy from a branch</strong>.</li>
+      <li>Select the <strong>main</strong> branch and the <strong>/ (root)</strong> folder, then click <strong>Save</strong>.</li>
+      <li>Wait for GitHub Pages to publish the site. The public address usually follows <strong>https://your-username.github.io/repository-name/</strong>.</li>
+      <li>For later changes, repeat the add, commit, and push steps. GitHub Pages will rebuild the site automatically.</li>
+    </ol>
+    <p class="note">Keep <strong>index.html</strong> in the repository root because it is the GitHub Pages entry page. Before pushing, check that passwords, private keys, personal tokens, and other secret information are not inside the project files.</p>
+
+    <h2>Part 5: Connect the Pages</h2>
+    <ol>
+      <li>Check that the main page links to both projects and all four practical pages.</li>
+      <li>Check that every page links back to the main page.</li>
+      <li>Add internal links where a page has multiple sections.</li>
+      <li>Use the same naming, color direction, spacing, and typography across related pages.</li>
+    </ol>
+
+    <h2>Part 6: Check the Deployed Site</h2>
+    <ol>
+      <li>Open the GitHub Pages URL in a browser, not with the VS Code Code Runner.</li>
+      <li>Click every project and Core Practical card from the deployed home page.</li>
+      <li>Confirm that all links use the existing relative filenames and do not point to local computer paths.</li>
+      <li>Refresh the diary page and confirm its browser-saved entries still work on the deployed site.</li>
+      <li>If a change does not appear immediately, wait for the Pages deployment to finish and refresh the browser.</li>
+    </ol>
+
+    <h2 id="testing">Part 7: Final Testing</h2>
+    <ol>
+      <li>Open the main page in a browser instead of using Code Runner for HTML.</li>
+      <li>Open each project and practical card from the home page.</li>
+      <li>Test every back link and internal link.</li>
+      <li>Check that images load and have useful alternative text.</li>
+      <li>Test the marquee, diary writing, accordion entries, and animated backgrounds.</li>
+      <li>Resize the browser to confirm the cards and pages remain readable on mobile.</li>
+    </ol>
+
+    <p class="note">The four Core Practical pages remain separate for submission, while this page combines their build process with the main page and project workflow.</p>
+  </main>
+</body>
+</html>

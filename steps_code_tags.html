@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Little Life Logs — Practical 05: Steps, Code & Tags</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #100718;
+      --bg-panel: rgba(29, 10, 35, 0.9);
+      --border-color: #73365f;
+      --text-main: #f7dce9;
+      --text-muted: #c89db8;
+      --text-heading: #fff5fb;
+      --accent-sakura: #ff6fae;
+      --accent-blue: #b883ff;
+      --accent-green: #b5f0d2;
+      --font-title: 'DM Sans', sans-serif;
+      --font-display: 'Playfair Display', serif;
+      --font-code: 'Space Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background:
+        radial-gradient(circle at 80% 10%, rgba(255, 91, 174, 0.28), transparent 25rem),
+        radial-gradient(circle at 15% 85%, rgba(177, 68, 255, 0.2), transparent 28rem),
+        linear-gradient(135deg, #100718 0%, #24102f 52%, #090615 100%);
+      color: var(--text-main);
+      font-family: var(--font-title);
+      min-height: 100vh;
+      padding: 2rem;
+    }
+    .panel {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2.5rem;
+      background: var(--bg-panel);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(18px);
+    }
+    .back-btn, nav a { color: var(--accent-sakura); font-family: var(--font-code); font-size: 0.8rem; }
+    .back-btn { display: inline-block; margin-bottom: 1rem; text-decoration: none; }
+    nav { margin-bottom: 2rem; }
+    h1, h2 { color: var(--text-heading); font-family: var(--font-display); }
+    h1 { margin-bottom: 0.75rem; }
+    h2 { margin: 2rem 0 0.75rem; }
+    p, li { color: var(--text-muted); line-height: 1.7; }
+    ol { padding-left: 1.5rem; }
+    li { margin-bottom: 0.6rem; }
+    pre {
+      overflow-x: auto;
+      margin: 1rem 0;
+      padding: 1rem;
+      color: var(--accent-green);
+      background: rgba(7, 2, 13, 0.9);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      font: 0.8rem/1.6 var(--font-code);
+    }
+    code { color: var(--accent-green); font-family: var(--font-code); }
+    table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    th, td { border: 1px solid var(--border-color); padding: 0.8rem; text-align: left; vertical-align: top; }
+    th { color: var(--text-heading); background: rgba(255, 111, 174, 0.12); }
+    td { color: var(--text-muted); }
+    @media (max-width: 650px) {
+      body { padding: 1rem; }
+      .panel { padding: 1.25rem; }
+      th, td { padding: 0.55rem; font-size: 0.85rem; }
+    }
+  </style>
+</head>
+<body>
+  <main class="panel">
+    <a href="index.html" class="back-btn">&larr; BACK TO MASTER WORKSPACE</a>
+    <nav aria-label="Internal page links"><a href="#steps">Jump to steps</a> | <a href="#tags">Jump to tags</a></nav>
+
+    <h1>HOW THIS LITTLE SITE WAS BUILT</h1>
+    <p>This extra practical explains the process behind the four Core Practical pages and the two project pages.</p>
+
+    <h2 id="steps">Steps Used</h2>
+    <ol>
+      <li>Create a separate HTML file for each topic.</li>
+      <li>Add the document structure: <code>html</code>, <code>head</code>, and <code>body</code>.</li>
+      <li>Add page information such as the character set, viewport, and <code>title</code>.</li>
+      <li>Write the topic content using semantic HTML tags.</li>
+      <li>Add hyperlinks so every page can return to the home page and reach an internal section.</li>
+      <li>Add CSS for layout, fonts, colors, spacing, responsive design, and animation.</li>
+      <li>Open the files in a browser and test every link, image, and interactive element.</li>
+    </ol>
+
+    <h2>Basic Page Code</h2>
+    <pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;My Web Page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;My Story&lt;/h1&gt;
+    &lt;p&gt;A short description goes here.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+
+    <h2>Hyperlink and Image Code</h2>
+    <pre>&lt;a href="formatting.html"&gt;Open formatting page&lt;/a&gt;
+&lt;a href="#steps"&gt;Jump to steps&lt;/a&gt;
+&lt;img src="photo.jpg" alt="A coffee on a table"&gt;</pre>
+
+    <h2 id="tags">Tags Used and Their Purpose</h2>
+    <table>
+      <thead>
+        <tr><th>Tag</th><th>Purpose</th><th>Used In This Site</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code></td><td>Create six levels of headings.</td><td>Formatting and page titles.</td></tr>
+        <tr><td><code>&lt;p&gt;</code></td><td>Write a paragraph of text.</td><td>Stories and explanations.</td></tr>
+        <tr><td><code>&lt;b&gt;</code>, <code>&lt;i&gt;</code>, <code>&lt;u&gt;</code>, <code>&lt;s&gt;</code></td><td>Apply bold, italic, underline, and strike formatting.</td><td>Formatting practical.</td></tr>
+        <tr><td><code>&lt;sub&gt;</code>, <code>&lt;sup&gt;</code>, <code>&lt;mark&gt;</code></td><td>Show subscript, superscript, and highlighted text.</td><td>Formatting examples.</td></tr>
+        <tr><td><code>&lt;a&gt;</code></td><td>Create external, page-to-page, or internal links.</td><td>Navigation on every page.</td></tr>
+        <tr><td><code>&lt;img&gt;</code></td><td>Display an image with alternative text.</td><td>Photo gallery and marquee.</td></tr>
+        <tr><td><code>&lt;br&gt;</code>, <code>&lt;hr&gt;</code>, <code>&lt;pre&gt;</code></td><td>Create a line break, divider, and preformatted code block.</td><td>Other Tags practical.</td></tr>
+        <tr><td><code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code>, <code>&lt;th&gt;</code>, <code>&lt;td&gt;</code></td><td>Organize information into rows and columns.</td><td>This steps and reference page.</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Testing Checklist</h2>
+    <p>Check that the page opens in a browser, every home link works, internal links jump to the correct section, images have <code>alt</code> text, and the layout works on both desktop and mobile screens.</p>
+  </main>
+</body>
+</html>
